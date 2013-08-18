@@ -1,0 +1,85 @@
+Go for Statistical Programming
+NY Open Statistical Programming Meetup: Knewton HQ
+19 Aug 2013
+
+Aditya Mukerjee
+
+http://www.adityamukerjee.net
+@chimeracoder
+
+* 
+.image 88x31.png
+
+* Personal Background
+
+- Studied computer science and statistics at Columbia
+- Worked on the server team at foursquare (Explore recommendation engine)
+- Previously on the OkCupid data team (conducted research for OkTrends reports)
+- Most recently, Hacker-in-Residence at Quotidian Ventures
+- hackNY fellow 2011
+
+
+* OkCupid Data Workflow (circa 2009)
+- 80% munging (Python), 20% statistical analysis (R)
+
+
+* Python in 2009
+- In 2009, Python was useable for data science, but not as convenient as today
+- Tools like Pandas either didn't exist yet or were not stable/widely adopted
+- RPy existed (since 2002)
+- Numpy existed (since 2005, previously "Numeric")
+- Scipy existed, though with far fewer components and features
+
+* Go in 2013
+
+- [[https://github.com/sbinet/go-python][go-python]] provides CPython bindings
+- [[https://github.com/skelterjohn/go.matrix][go-matrix]] provides some vector/matrix operations
+- No clear equivalent to Pandas yet
+
+
+
+* Advantages of Go
+
+- Very fast (runtime)
+- Very fast (compilation)
+- Native concurrency 
+- Easy parallelization (R is single threaded, Python has GIL)
+- Portable (cross-compilation)
+
+
+* Disadvantages of Go
+
+- Relatively new language (but not that new)!
+
+
+
+
+* Concurrency in Go: Goroutines
+.play synchronous_greet.go
+
+
+* 
+.play async_greet.go
+
+Yes, it really is just that easy.
+
+
+* Concurrency in Go: Channels
+- Channels provide a convenient way to share information between goroutines
+- Channels serve as a "synchronization point" between otherwise independent, concurrent goroutines
+
+
+* Concurrency Example: Channels
+.play channel_example.go
+
+
+* Go makes concurrency easy
+- Goroutines are easy to reason about
+- Channels make sharing information between goroutines easy
+- Go includes [[http://golang.org/doc/articles/race_detector.html][a built-in race detector]]
+
+
+* Data scraping in Go
+
+
+& 
