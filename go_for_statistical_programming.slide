@@ -53,12 +53,34 @@ http://www.adityamukerjee.net
 
 
 
+* Concurrency in Go
+
+* Go's Concurrency Model:
+- "Do not communicate by sharing memory; instead, share memory by communicating.""
+- Make writing concurrent, asynchronous code as easy as writing synchronous code
+
 
 * Concurrency in Go: Goroutines
+- Goroutines are *not* threads
+- Goroutines are *not* coroutines
+- Goroutines are *not* processes
+
+
+* So what is a goroutine?
+[[http://golang.org/doc/effective_go.html#goroutines][From the docs]]
+- A goroutine is "a function executing concurrently with other goroutines in the same address space"
+- Goroutines are *light*
+- Goroutines are *multiplexed* onto multiple OS threads
+- Goroutines are similar to the *&* operator in bash/sh
+
+
+
+
+* Synchronicity by Example
 .play synchronous_greet.go
 
 
-* 
+* Goroutines by Example
 .play async_greet.go
 
 Yes, it really is just that easy.
@@ -69,7 +91,7 @@ Yes, it really is just that easy.
 - Channels serve as a "synchronization point" between otherwise independent, concurrent goroutines
 
 
-* Concurrency Example: Channels
+* Channels by Example:
 .play channel_example.go
 
 
