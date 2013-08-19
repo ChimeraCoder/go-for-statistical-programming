@@ -14,5 +14,5 @@ func main() {
 	go Greet("Alice")
 	go Greet("Bob")
 
-    time.Sleep(5 * time.Second)
+	time.Sleep(5 * time.Second)
 }
