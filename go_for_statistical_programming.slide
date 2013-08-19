@@ -94,6 +94,9 @@ Yes, it really is just that easy.
 * Channels by Example:
 .play channel_example.go
 
+* Let's take a closer look at that:
+.play channel_example_annotated.go
+
 
 * Go makes concurrency easy
 - Goroutines are easy to reason about
@@ -101,7 +104,35 @@ Yes, it really is just that easy.
 - Go includes [[http://golang.org/doc/articles/race_detector.html][a built-in race detector]]
 
 
+* Data processing in Go
+
+* Go Standard Library
+Some tools included for free in the [[http://golang.org/pkg/][standard library]]:
+
+- [[http://golang.org/pkg/image/][Image processing]]: GIF/JPEG/PNG decoder & encoder, and [[http://golang.org/pkg/image/draw/][image composition]]
+- Web scraping: [[http://golang.org/pkg/encoding/xml/][xml]] parser
+- Email: [[http://golang.org/pkg/net/mail/][parse]] and [[http://golang.org/pkg/net/smtp/][send]] emails
+- Numerical tools: Arithmetic on [[http://golang.org/pkg/math/big/][large numbers]] and [[http://golang.org/pkg/math/cmplx/][complex/imaginary]] numbers
+
 * Data scraping in Go
 
+* Example: Rate-Limiting & Scraping
 
-& 
+- (For the full project, see [[github.com/ChimeraCoder/goangel][goangel]] on Github)
+.code rate_limit_example.go
+
+
+- This lets us decouple the asynchronous scraping from the (synchronous) rate-limiting
+
+
+* Other useful munging tools
+
+[[github.com/ChimeraCoder/gojson][go-json]] - automatically generate static struct definitions for JSON unmarshalling
+[[labix.org/mgo][mgo]] - a MongoDB client library for Go
+[[github.com/garyburd/redigo/redis][redigo]] - A Redis client library in Go
+
+
+* Conclusion
+
+- Go is *already* an excellent tool for data processing, scraping, munging, and scripting
+- Go is *becoming* an excellent tool for numerical work and scientific computation
