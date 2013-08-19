@@ -29,8 +29,11 @@ http://www.adityamukerjee.net
 - RPy existed (since 2002)
 - Numpy existed (since 2005, previously "Numeric")
 - Scipy existed, though with far fewer components and features
+- All the munging tools were in place, but numerical tools were lagging somewhat
 
 * Go in 2013
+
+Numerical tools exist, but are still WIPs
 
 - [[https://github.com/sbinet/go-python][go-python]] provides CPython bindings
 - [[https://github.com/skelterjohn/go.matrix][go-matrix]] provides some vector/matrix operations
@@ -45,13 +48,29 @@ http://www.adityamukerjee.net
 - Native concurrency 
 - Easy parallelization (R is single threaded, Python has GIL)
 - Portable (cross-compilation)
+- Can call other languages from within Go
+- Type system: safety of static typing, with the flexibility of dynamic (via interfaces)
 
 
 * Disadvantages of Go
 
 - Relatively new language (but not that new)!
+- "main" function must be written in Go
 
 
+* Speed
+
+- Go tends to be *>10x* faster than Python (and *>50x* faster than R)
+- Go compiles as fast as the Python interpreter takes to start up
+
+
+* Type system
+
+- Go is *statically*typed* 
+- Go's *type*inference* makes static typing painless
+.code typing_example.go
+- Go's *interfaces* provide some of the benefits of dynamic typing
+- Refactoring and debugging are easier because the compiler is strict
 
 * Concurrency in Go
 
@@ -123,6 +142,25 @@ Some tools included for free in the [[http://golang.org/pkg/][standard library]]
 
 
 - This lets us decouple the asynchronous scraping from the (synchronous) rate-limiting
+
+
+* Channels for parallel computation
+
+- If a computation can be split into independent components, it can be parallelized
+- Channels can be used to signal completion of a portion of the work
+- Channels can be used to select the fastest algorithm
+
+
+* Selecting Channels
+- "select" will read from the first channel that sends a value
+.code select_example.go /START OMIT/,/END OMIT/
+
+- This can also be used to initiate timeouts
+.code select_timeout_example.go /START OMIT/,/END OMIT/
+
+* Example: Data Collection with Background Computation
+
+.image 2013-08-18-220614_1366x768_scrot.png
 
 
 * Other useful munging tools
