@@ -14,9 +14,27 @@ http://www.adityamukerjee.net
 
 - Studied computer science and statistics at Columbia
 - Worked on the server team at foursquare (Explore recommendation engine)
-- Previously on the OkCupid data team (conducted research for OkTrends reports)
+- Previously on the OkCupid data team (conducted research for [[http://blog.okcupid.com/index.php/the-real-stuff-white-people-like/][OkTrends]] reports)
 - Most recently, Hacker-in-Residence at Quotidian Ventures
 - hackNY fellow 2011
+
+* Overview of Go History
+
+* Birth
+- Go was first announced in 2009
+- Go 1.0 (first stable release) was released in 2012
+- Current version: 1.1 
+.image go_gopher_color_logo_250x249[1].png
+
+* Systems programming
+- Developed by Google to address *systems* programming challenges
+- [[http://dl.google.com]] was recently rewritten from C++ to Go
+
+* Design goals
+- Make managing *concurrent/distributed*systems* easy 
+- Simplify *collaboration* between multiple developers
+- Facilitate *evolving* codebases (refactoring, etc.)
+- Easy to *build*&*deploy*
 
 
 * OkCupid Data Workflow (circa 2009)
@@ -33,15 +51,13 @@ http://www.adityamukerjee.net
 
 * Go in 2013
 
-Numerical tools exist, but are still WIPs
-
+- Lots of munging tools available
+- Numerical tools exist, but are still WIPs
 - [[https://github.com/sbinet/go-python][go-python]] provides CPython bindings
 - [[https://github.com/skelterjohn/go.matrix][go-matrix]] provides some vector/matrix operations
 - No clear equivalent to Pandas yet
 
-
-
-* Advantages of Go
+* Advantages of Go (for statisticians)
 
 - Very fast (runtime)
 - Very fast (compilation)
@@ -55,14 +71,12 @@ Numerical tools exist, but are still WIPs
 * Disadvantages of Go
 
 - Relatively new language (but not that new)!
-- "main" function must be written in Go
-
+- Academia tends to be slower to pick up new tools
 
 * Speed
 
 - Go tends to be *>10x* faster than Python (and *>50x* faster than R)
 - Go compiles as fast as the Python interpreter takes to start up
-
 
 * Type system
 
@@ -71,6 +85,66 @@ Numerical tools exist, but are still WIPs
 .code typing_example.go
 - Go's *interfaces* provide some of the benefits of dynamic typing
 - Refactoring and debugging are easier because the compiler is strict
+
+
+* Getting started with Go
+
+* Go for Python programmers
+
+- Go fits the [[http://www.python.org/dev/peps/pep-0020/][Zen of Python]] very well
+- You will love gofmt
+- You will love the native concurrency
+- You will miss duck typing at first, until you learn to use interfaces
+
+See also: [[https://github.com/ChimeraCoder/go-for-pythonists][Go for Pythonists]]
+
+* Go for R programmers
+
+- Go's structs & methods are far simpler than S3/S4 methods
+- You will love the speed and reliability
+- You will love the native concurrency
+- You will miss the 'lapply', etc. paradigms at first.
+- You will miss the diverse selection of advanced statistical packages
+
+* Tips for R programmers
+- Go is more imperative than R - get used to explicit iterations
+- Structs are very lightweight - don't be afraid to use them
+- Let the compiler guide you
+
+
+* Function declaration
+.code function_declaration.go
+
+* Zero values
+- By default, an uninitialized value carries the *zero*value* for that type
+- Encourages you to design your application in such a way that the default values are meaningful
+
+
+* For loops/If statements
+.code for_loop_example.go
+
+
+* Error Handling
+- *Explicit*is*better*than*implicit*
+- Instead of raising exceptions, *return*errors*
+- Errors are more *visible* in the code
+
+
+* Structs
+
+- All fields are defined at compiletime
+- *No* inheritance
+.code struct_example.go
+
+
+* Interfaces in Go
+- If *any* type provides the methods of an interface, it belongs to the interface
+- Like dynamic languages with "duck" typing, you simply use the struct and it "just works"
+- Unlike dynamic languages, safety is checked at compile-time
+
+* Using Interfaces
+.code interface_example.go
+
 
 * Concurrency in Go
 
@@ -86,7 +160,7 @@ Numerical tools exist, but are still WIPs
 
 
 * So what is a goroutine?
-[[http://golang.org/doc/effective_go.html#goroutines][From the docs]]
+[[http://golang.org/doc/effective_go.html#goroutines][From the docs:]]
 - A goroutine is "a function executing concurrently with other goroutines in the same address space"
 - Goroutines are *light*
 - Goroutines are *multiplexed* onto multiple OS threads
@@ -96,13 +170,21 @@ Numerical tools exist, but are still WIPs
 
 
 * Synchronicity by Example
-.play synchronous_greet.go
+.play synchronous_greet.go /START OMIT/,/END OMIT/
 
 
 * Goroutines by Example
-.play async_greet.go
+.play async_greet.go /START OMIT/,/END OMIT/
 
 Yes, it really is just that easy.
+
+
+* Goroutines vs. Callbacks
+
+- Goroutines resemble synchronous code
+- Callbacks resemble synchronous code turned "inside out"
+- It is easy to turn a function call into a goroutine
+- It is difficult to refactor synchronous code to use callbacks
 
 
 * Concurrency in Go: Channels
@@ -111,10 +193,10 @@ Yes, it really is just that easy.
 
 
 * Channels by Example:
-.play channel_example.go
+.play channel_example.go /START OMIT/,/END OMIT/
 
 * Let's take a closer look at that:
-.play channel_example_annotated.go
+.play channel_example_annotated.go /START OMIT/,/END OMIT/
 
 
 * Go makes concurrency easy
@@ -162,6 +244,11 @@ Some tools included for free in the [[http://golang.org/pkg/][standard library]]
 
 .image 2013-08-18-220614_1366x768_scrot.png
 
+
+* Writing extensions in C
+
+- This is relatively easy to do via [[http://golang.org/cmd/cgo/][cgo]]
+- While helpful, it is necessary far less often than you might think
 
 * Other useful munging tools
 
