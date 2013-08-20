@@ -5,6 +5,7 @@ import (
 	"log"
 )
 
+//START OMIT
 func Greet(name string, response_chan chan string) {
 	greeting := fmt.Sprintf("Greetings, %s!", name)
 	response_chan <- greeting
@@ -17,3 +18,4 @@ func main() {
 	greeting := <-cs
 	log.Print(greeting)
 }
+//END OMIT

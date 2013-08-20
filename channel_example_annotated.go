@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+//START OMIT
 func Greet(name string, response_chan chan string) {
 	time.Sleep(3 * time.Second)
 	greeting := fmt.Sprintf("Greetings, %s!", name)
@@ -24,3 +25,4 @@ func main() {
 	log.Print(greeting)
 	time.Sleep(10 * time.Second)
 }
+//END OMIT
