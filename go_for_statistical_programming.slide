@@ -135,6 +135,8 @@ See also: [[https://github.com/ChimeraCoder/go-for-pythonists][Go for Pythonists
 - All fields are defined at compiletime
 - *No* inheritance
 .code struct_example.go
+- Embedded structs are permitted
+.code embedded_struct.go
 
 
 * Interfaces in Go
