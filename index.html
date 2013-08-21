@@ -472,6 +472,25 @@ func main(){
     superSecretId int64
 }</pre></div>
 
+  <ul>
+  
+    <li>Embedded structs are permitted</li>
+  
+  </ul>
+
+  <div class="code" contenteditable="true" spellcheck="false"><!--{{.code embedded_struct.go}}
+--><pre>type Person struct {
+    MainAccount CheckingAccount
+}
+
+type Bank struct {
+    Accounts []CheckingAccount
+    SavingsAccounts []struct{
+        Balance int
+        InterestRate float64
+    }
+}</pre></div>
+
       
       </article>
   
