@@ -18,4 +18,5 @@ func main() {
 	greeting := <-cs
 	log.Print(greeting)
 }
+
 //END OMIT

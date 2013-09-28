@@ -39,108 +39,6 @@ http://www.adityamukerjee.net
 - Facilitate *evolving* codebases (refactoring, etc.)
 - Easy to *build*&*deploy*
 
-
-* OkCupid Data Workflow (circa 2009)
-- 80% munging (Python), 20% statistical analysis (R)
-
-
-* Python in 2009
-- In 2009, Python was useable for data science, but not as convenient as today
-- Tools like Pandas either didn't exist yet or were not stable/widely adopted
-- RPy existed (since 2002)
-- Numpy existed (since 2005, previously "Numeric")
-- Scipy existed, though with far fewer components and features
-- All the munging tools were in place, but numerical tools were lagging somewhat
-
-* Go in 2013
-
-- Lots of munging tools available
-- Numerical tools exist, but are still WIPs
-- [[https://github.com/sbinet/go-python][go-python]] provides CPython bindings
-- [[https://github.com/skelterjohn/go.matrix][go-matrix]] provides some vector/matrix operations
-- No clear equivalent to Pandas yet
-
-* Advantages of Go
-
-- Very fast (runtime)
-- Very fast (compilation)
-- Native concurrency 
-- Memory management
-- Easy parallelization (Node.js is single threaded, Python and Ruby have the GIL)
-- Portable (cross-compilation)
-- Can call other languages from within Go
-- Type system: safety of static typing, with the flexibility of dynamic (via interfaces)
-
-
-* Disadvantages of Go
-
-- Relatively new language (but not that new)!
-
-* Speed
-
-- Go tends to be *>10x* faster than Python
-- Go compiles as fast as the Python interpreter takes to start up
-
-* Type system
-
-- Go is *statically*typed* 
-- Go's *type*inference* makes static typing painless
-.code typing_example.go
-- Go's *interfaces* provide some of the benefits of dynamic typing
-- Refactoring and debugging are easier because the compiler is strict
-
-
-* Getting started with Go
-
-* Go for Python/Ruby/Node.js programmers
-
-- Go fits the [[http://www.python.org/dev/peps/pep-0020/][Zen of Python]] very well
-- You will love gofmt
-- You will love the native concurrency
-- You will miss duck typing at first, until you learn to use interfaces
-- You will love [[github.com/ChimeraCoder/gojson][gojson]] for handling JSON
-
-See also: [[https://github.com/ChimeraCoder/go-for-pythonists][Go for Pythonists]]
-
-
-* Function declaration
-.code function_declaration.go
-
-* Zero values
-- By default, an uninitialized value carries the *zero*value* for that type
-- Encourages you to design your application in such a way that the default values are meaningful
-
-
-* For loops/If statements
-.code for_loop_example.go
-- Similar to "enumerate" in Python
-
-
-* Error Handling 
-- *Explicit*is*better*than*implicit* (The Zen of Python)
-- Instead of raising exceptions, *return*errors*
-- Errors are more *visible* in the code
-
-.code error_example.go
-
-* Structs
-
-- All fields are defined at compiletime
-- *No* inheritance
-.code struct_example.go
-- Embedded structs are permitted
-.code embedded_struct.go
-
-
-* Interfaces in Go
-- If *any* type provides the methods of an interface, it belongs to the interface
-- Like dynamic languages with "duck" typing, you simply use the struct and it "just works"
-- Unlike dynamic languages, safety is checked at compile-time
-
-* Using Interfaces
-.code interface_example.go
-
-
 * Concurrency in Go
 
 * Go's Concurrency Model:
@@ -200,6 +98,69 @@ Yes, it really is just that easy.
 - Go includes [[http://golang.org/doc/articles/race_detector.html][a built-in race detector]]
 
 
+
+* Advantages of Go
+
+- Very fast (runtime)
+- Very fast (compilation)
+- Native concurrency 
+- Memory management
+- Easy parallelization (Node.js is single threaded, Python and Ruby have the GIL)
+- Portable (cross-compilation)
+- Can call other languages from within Go
+- Type system: safety of static typing, with the flexibility of dynamic (via interfaces)
+
+
+* Disadvantages of Go
+
+- Relatively new language (but not that new)!
+
+
+
+* Python in 2009
+- In 2009, Python was useable for data science, but not as convenient as today
+- Tools like Pandas either didn't exist yet or were not stable/widely adopted
+- RPy existed (since 2002)
+- Numpy existed (since 2005, previously "Numeric")
+- Scipy existed, though with far fewer components and features
+- All the munging tools were in place, but numerical tools were lagging somewhat
+
+* Go in 2013
+
+- Lots of munging tools available
+- Numerical tools exist, but are still WIPs
+- [[https://github.com/sbinet/go-python][go-python]] provides CPython bindings
+- [[https://github.com/skelterjohn/go.matrix][go-matrix]] provides some vector/matrix operations
+- No clear equivalent to Pandas yet
+
+* Speed
+
+- Go tends to be *>10x* faster than Python
+- Go compiles as fast as the Python interpreter takes to start up
+
+* Type system
+
+- Go is *statically*typed* 
+- Go's *type*inference* makes static typing painless
+.code typing_example.go
+- Go's *interfaces* provide some of the benefits of dynamic typing
+- Refactoring and debugging are easier because the compiler is strict
+
+
+
+* Go for Python/Ruby/Node.js programmers
+
+- Go fits the [[http://www.python.org/dev/peps/pep-0020/][Zen of Python]] very well
+- You will love gofmt
+- You will love the native concurrency
+- You will miss duck typing at first, until you learn to use interfaces
+- You will love [[github.com/ChimeraCoder/gojson][gojson]] for handling JSON
+
+See also: [[https://github.com/ChimeraCoder/go-for-pythonists][Go for Pythonists]]
+See also: [[http://golang.org/doc/effective_go.html][Effective Go]]
+
+
+
 * Data processing in Go
 
 * Go Standard Library
@@ -239,6 +200,46 @@ Some tools included for free in the [[http://golang.org/pkg/][standard library]]
 * Example: Data Collection with Background Computation
 
 .image 2013-08-18-220614_1366x768_scrot.png
+
+
+
+* Getting started with Go
+* Function declaration
+.code function_declaration.go
+
+* Zero values
+- By default, an uninitialized value carries the *zero*value* for that type
+- Encourages you to design your application in such a way that the default values are meaningful
+
+
+* For loops/If statements
+.code for_loop_example.go
+- Similar to "enumerate" in Python
+
+
+* Error Handling 
+- *Explicit*is*better*than*implicit* (The Zen of Python)
+- Instead of raising exceptions, *return*errors*
+- Errors are more *visible* in the code
+
+.code error_example.go
+
+* Structs
+
+- All fields are defined at compiletime
+- *No* inheritance
+.code struct_example.go
+- Embedded structs are permitted
+.code embedded_struct.go
+
+
+* Interfaces in Go
+- If *any* type provides the methods of an interface, it belongs to the interface
+- Like dynamic languages with "duck" typing, you simply use the struct and it "just works"
+- Unlike dynamic languages, safety is checked at compile-time
+
+* Using Interfaces
+.code interface_example.go
 
 
 * Writing extensions in C

@@ -25,4 +25,5 @@ func main() {
 	log.Print(greeting)
 	time.Sleep(10 * time.Second)
 }
+
 //END OMIT

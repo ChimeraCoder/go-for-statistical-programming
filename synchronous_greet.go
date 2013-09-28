@@ -14,5 +14,8 @@ func Greet(name string) {
 func main() {
 	Greet("Alice")
 	Greet("Bob")
+
+	time.Sleep(5 * time.Second)
 }
+
 //END OMIT
