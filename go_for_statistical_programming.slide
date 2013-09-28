@@ -1,6 +1,6 @@
-Go for Statistical Programming
-NY Open Statistical Programming Meetup: Knewton HQ
-19 Aug 2013
+Introduction to Go 
+hackNY Masters Conference
+28 Sep 2013
 
 Aditya Mukerjee
 
@@ -9,6 +9,8 @@ http://www.adityamukerjee.net
 
 * 
 .image 88x31.png
+- Text provided under CC-BY-SA
+- Code provided under GPLv3 unless otherwise stated
 
 * Personal Background
 
@@ -29,6 +31,7 @@ http://www.adityamukerjee.net
 * Systems programming
 - Developed by Google to address *systems* programming challenges
 - [[http://dl.google.com]] was recently rewritten from C++ to Go
+
 
 * Design goals
 - Make managing *concurrent/distributed*systems* easy 
@@ -57,12 +60,13 @@ http://www.adityamukerjee.net
 - [[https://github.com/skelterjohn/go.matrix][go-matrix]] provides some vector/matrix operations
 - No clear equivalent to Pandas yet
 
-* Advantages of Go (for statisticians)
+* Advantages of Go
 
 - Very fast (runtime)
 - Very fast (compilation)
 - Native concurrency 
-- Easy parallelization (R is single threaded, Python has GIL)
+- Memory management
+- Easy parallelization (Node.js is single threaded, Python and Ruby have the GIL)
 - Portable (cross-compilation)
 - Can call other languages from within Go
 - Type system: safety of static typing, with the flexibility of dynamic (via interfaces)
@@ -71,11 +75,10 @@ http://www.adityamukerjee.net
 * Disadvantages of Go
 
 - Relatively new language (but not that new)!
-- Academia tends to be slower to pick up new tools
 
 * Speed
 
-- Go tends to be *>10x* faster than Python (and *>50x* faster than R)
+- Go tends to be *>10x* faster than Python
 - Go compiles as fast as the Python interpreter takes to start up
 
 * Type system
@@ -89,27 +92,15 @@ http://www.adityamukerjee.net
 
 * Getting started with Go
 
-* Go for Python programmers
+* Go for Python/Ruby/Node.js programmers
 
 - Go fits the [[http://www.python.org/dev/peps/pep-0020/][Zen of Python]] very well
 - You will love gofmt
 - You will love the native concurrency
 - You will miss duck typing at first, until you learn to use interfaces
+- You will love [[github.com/ChimeraCoder/gojson][gojson]] for handling JSON
 
 See also: [[https://github.com/ChimeraCoder/go-for-pythonists][Go for Pythonists]]
-
-* Go for R programmers
-
-- Go's structs & methods are far simpler than S3/S4 methods
-- You will love the speed and reliability
-- You will love the native concurrency
-- You will miss the 'lapply', etc. paradigms at first.
-- You will miss the diverse selection of advanced statistical packages
-
-* Tips for R programmers
-- Go is more imperative than R - get used to explicit iterations
-- Structs are very lightweight - don't be afraid to use them
-- Let the compiler guide you
 
 
 * Function declaration
@@ -122,13 +113,15 @@ See also: [[https://github.com/ChimeraCoder/go-for-pythonists][Go for Pythonists
 
 * For loops/If statements
 .code for_loop_example.go
+- Similar to "enumerate" in Python
 
 
-* Error Handling
-- *Explicit*is*better*than*implicit*
+* Error Handling 
+- *Explicit*is*better*than*implicit* (The Zen of Python)
 - Instead of raising exceptions, *return*errors*
 - Errors are more *visible* in the code
 
+.code error_example.go
 
 * Structs
 
@@ -219,13 +212,14 @@ Some tools included for free in the [[http://golang.org/pkg/][standard library]]
 
 * Data scraping in Go
 
-* Example: Rate-Limiting & Scraping
+* Rate-limiting a Twitter API Client in Go
 
-- (For the full project, see [[github.com/ChimeraCoder/goangel][goangel]] on Github)
-.code rate_limit_example.go
+.code anaconda_example.go
+
+- This lets us *decouple* the asynchronous scraping from the (synchronous) rate-limiting
+- Full code available on [[http://github.com/ChimeraCoder/anaconda][github.com/ChimeraCoder/anaconda]]
 
 
-- This lets us decouple the asynchronous scraping from the (synchronous) rate-limiting
 
 
 * Channels for parallel computation
